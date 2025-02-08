@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result</title>
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        .content {
+            width: 50%;
+            height: 30%; /* Sets the width of the content section to 50% of the page */
+            margin: 0 auto; /* Centers the content section */
+        }
+    
+        .video-container, .media-container {
+            width: 100%; /* Ensures child containers take up the full width of the content */
+        }
+    
+        video, img {
+            width: 100%; /* Ensures media elements take up the full width of their parent */
+            height: 50%; /* Maintains aspect ratio */
+            object-fit: cover;
+        }
+    
+        body {
+            text-align: center; /* Centers all content visually on the page */
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>Number Plate Detection</h1>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/user">Result</a></li>
+          </ul>
+        </nav>
+    </header>
+    <h2>Detection Results</h2>
+    <div class="content">
+        {% if image_url %}
+            <div class="media-container">
+                <h3>Processed Image:</h3>
+                <img src="{{ image_url }}" alt="Processed Image">
+                <!-- <p>Detected Character: {{ image_detected_character }}</p> -->
+            </div>
+        {% endif %}
+
+        {% if video_url %}
+            <div class="video-container">
+                <h3>Processed Video:</h3>
+                <video controls>
+                    <source src="{{ video_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- <p>Detected Character: {{ video_detected_character }}</p> -->
+            </div>
+        {% endif %}
+
+        <div class="recognized-section">
+            <h3>Recognized Characters:</h3>
+            <p>{{ recognized_texts | join(", ") }}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+body {
+  font-family: 'Times New Roman', serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-size: 110%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0033cc;
+  color: #fffefe;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+main {
+  padding: 20px;
+}
+
+.hero { 
+  text-align: center;
+  font-size: 110%;
+  padding: 50px;
+  background-image: url('/static/grey.jpg');
+  background-size: cover; /* Ensures the background image covers the entire container */
+  background-position: center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
+
+.car {
+  position: absolute;
+  bottom: 79%;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  border: none; /* Removes any border */
+  outline: none; /* Removes any focus outline */
+  box-shadow: none;
+  clip-path: inset(5px 5px 5px 5px); /* Adjust values to crop the black border */
+}
+
+.car::before, .car::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  width: 10px;
+  height: 10px;
+  background: black;
+  border-radius: 50%;
+}
+
+.car::before {
+  left: 5px;
+}
+
+.car::after {
+  right: 5px;
+}
+
+.car1 {
+  height: 60px; /* Set the height as needed */
+  width: auto; /* Maintain aspect ratio */
+  animation: moveCar1 5s linear infinite;
+}
+
+.car2 {
+  height: 60px; /* Set the height as needed */
+  width: auto; /* Maintain aspect ratio */
+  animation: moveCar2 5s linear infinite;
+  bottom: 56%; /* Adjust height for variation */
+  width: 60px; /* Slightly larger car */
+  transform: scaleX(-1); /* Reflect the car horizontally */
+}
+
+@keyframes moveCar1 {
+  0% {
+    left: -60px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes moveCar2 {
+  0% {
+    right: -60px;
+  }
+  100% {
+    right: 100%;
+  }
+}
+/* class hero css ended */
+
+.upload-section {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.upload-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.upload-form {
+  width: 45%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form h3 {
+  text-align: center;
+}
+
+.upload-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.upload-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0033cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+  text-align: center;
+}
+
+.features div {
+  width: 30%;
+}
+
+/* Loader and detection load css*/
+#loader {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid #f3f3f3; /* Light gray */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  z-index: 101; /* Higher than the overlay */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#detecting-text {
+  display: none;
+  position: fixed;
+  top: 65%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  z-index: 101; /* Higher than the overlay */
+}
+/* loader css end */
+
+/* footer css */
+.footer {
+  background-color: #f0f0f0;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px
+}
+
+.footertext {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}

@@ -1,0 +1,5 @@
+names:
+- number plate
+path: C:/Users/Acer nitro 5/number/datasets/new/newdata
+train: train/images
+val: val/images

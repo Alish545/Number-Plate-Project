@@ -1,0 +1,6 @@
+names:
+  - number plate
+nc: 1
+path: C:/Users/Acer nitro 5/number/datasets
+train: C:/Users/Acer nitro 5/number/datasets/train/images
+val: C:/Users/Acer nitro 5/number/datasets/val/images

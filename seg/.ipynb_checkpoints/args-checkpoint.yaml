@@ -1,0 +1,17 @@
+task: detect
+mode: train
+model: yolov8n.pt
+data: C:\Users\Acer nitro 5\number\seg\dataset.yaml
+epochs: 20
+batch: 4
+imgsz: 640
+save: true
+verbose: true
+seed: 0
+deterministic: true
+single_cls: true  # Only one class
+lr0: 0.001        # Lower learning rate
+amp: false        # Disable mixed precision if encountering NaN losses
+momentum: 0.9     # Slightly lower momentum for stability
+rect: true        # Maintain aspect ratios for small datasets
+save_dir: runs\detect\character

@@ -1,0 +1,5 @@
+names:
+- character
+path: C:\Users\Acer nitro 5\number\seg\data
+train: train/images
+val: val/images

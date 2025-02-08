@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Plate Detection</title>   
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Number Plate Detection</h1>
+        <nav>
+          <ul>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/user">Result</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <h2>Automatic Number Plate Detection and Recognition</h2>
+        <p>
+          Automatic Number Plate Recognition software. Just Post your video or image file down below.
+        </p>
+        <img src="/static/car.png" alt="Car 1" class="car car1" />
+        <img src="/static/car.png" alt="Car 2" class="car car2" />
+      </section>
+
+      <section class="upload-section">
+        <div class="upload-container">
+            <div class="upload-form">
+                <form id="image-form" action="/detect_image" method="post" enctype="multipart/form-data">
+                    <h3>Upload an Image:</h3>
+                    <input type="file" name="file" accept="image/*">
+                    <button type="submit">Upload and Detect</button>
+                </form>
+            </div>
+        <div class="upload-form">
+            <form id="video-form" action="/detect_video" method="post" enctype="multipart/form-data">
+                <h3>Upload a Video:</h3>
+                <input type="file" name="file" accept="video/mp4">
+                <button type="submit">Upload and Detect</button>
+            </form>
+        </div>
+       </section>
+
+       <section class="features">
+        <div>
+          <h4>Try It Out</h4>
+          <p>Our algo handles good quality images and videos</p>
+        </div>
+        <div>
+          <h4>Images & Videos</h4>
+          <p>Snapshot decodes plates from images. Stream processes video files.</p>
+        </div>
+        <div>
+          <h4>Feature-Rich</h4>
+          <p>Get vehicle's Number plate and Character!</p>
+        </div>
+      </section>
+
+        <div>
+            <div id="loader"></div>
+            <div id="detecting-text"></div>
+        </div>
+
+    <script>
+        // Function to show the loader and text when a form is submitted
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('detecting-text').style.display = 'block';
+            resetTextAnimation();
+            animateText();
+        }
+
+        // Reset the Detecting text animation by clearing the content
+        function resetTextAnimation() {
+            const textElement = document.getElementById('detecting-text');
+            textElement.innerHTML = ''; // Clear previous text
+        }
+
+        // Add event listeners for both forms
+        document.getElementById('image-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+            showLoader(); // Show loader and text
+            setTimeout(() => {
+                this.submit(); // Submit the form after the loader is shown
+            }, 200); // Wait a bit before submitting to allow the loader to appear
+        });
+
+        document.getElementById('video-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+            showLoader(); // Show loader and text
+            setTimeout(() => {
+                this.submit(); // Submit the form after the loader is shown
+            }, 200); // Wait a bit before submitting to allow the loader to appear
+        });
+
+        // Function to animate the "Detecting..." text one letter at a time
+        function animateText() {
+            const text = 'Detecting...';
+            const textElement = document.getElementById('detecting-text');
+            let index = 0;
+
+            // Display one letter at a time, with a reset when the animation is complete
+            const interval = setInterval(function() {
+                if (index < text.length) {
+                    textElement.innerHTML += text[index++];
+                } else {
+                    // When "Detecting..." is fully typed, reset and start again
+                    textElement.innerHTML = ''; // Reset the text
+                    index = 0; // Reset the index to start over
+                }
+            }, 250); // Delay between each letter, 250ms
+
+            // Keep resetting every 3 seconds
+            setInterval(() => {
+                textElement.innerHTML = ''; // Clear the text to reset
+                index = 0; // Reset index
+            }, text.length * 200 + 1000); // After full text is shown, reset every 3 seconds
+        }
+    </script>
+    <footer class="footer">
+        <p>&copy; All rights reserved.</p>
+        <p class="footertext"></p>
+    </footer>
+</body>
+</html>
